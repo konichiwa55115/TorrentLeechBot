@@ -32,18 +32,6 @@ LOGGER = logging.getLogger(__name__)
 
 user_specific_config = dict()
 
-dotenv.load_dotenv("config.env")
-
-# checking compulsory variable
-for imp in ["TG_BOT_TOKEN", "APP_ID", "API_HASH", "OWNER_ID", "AUTH_CHANNEL"]:
-    try:
-        value = os.environ[imp]
-        if not value:
-            raise KeyError
-    except KeyError:
-        LOGGER.critical(f"Oh...{imp} is missing from config.env ... fill that")
-        exit()
-
 # The Telegram API things
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6032076608:AAHGXUrmFaf2_BUtoS5EyGm_SAuOhhfEzAg")
 APP_ID = int(os.environ.get("APP_ID", "17983098"))
